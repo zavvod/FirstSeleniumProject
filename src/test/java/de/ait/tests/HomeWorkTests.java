@@ -30,6 +30,8 @@ public class HomeWorkTests {
     @Test
     public void findElementByTagName(){
 
+
+
         WebElement title = driver.findElement(By.tagName("h2"));
         System.out.println(title.getText());
 

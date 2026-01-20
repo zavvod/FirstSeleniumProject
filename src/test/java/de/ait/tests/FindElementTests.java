@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.time.Duration;
 import java.util.List;
 
@@ -79,4 +80,75 @@ public class FindElementTests
 
 
     }
+
+    @Test
+    public void findElementByLinkText(){
+
+        WebElement linkText = driver.findElement(By.linkText("Let the car work"));
+        System.out.println(linkText.getText());
+
+
+        WebElement linkText2 = driver.findElement(By.linkText("Los Angeles"));
+        System.out.println(linkText2.getText());
+
+
+    }
+
+    @Test
+    public void findElementByPartialLinkText(){
+        WebElement partialLinkText = driver.findElement(By.partialLinkText("work"));
+        System.out.println(partialLinkText.getText());
+
+
 }
+    @Test
+    public void findElementByCssSelector(){
+
+
+    // [key='value']
+    // [href='/search']
+
+        WebElement css1 = driver.findElement(By.cssSelector("[href='/search']"));
+        WebElement css2 = driver.findElement(By.cssSelector("[for='city']"));
+
+        //contains -> *
+        driver.findElement(By.cssSelector("[class*='cities']"));
+        // start -> ^
+        driver.findElement(By.cssSelector("[class^='top']"));
+        // end -> $
+        driver.findElement(By.cssSelector("[class$='container']"));
+
+        //composite cssSelector
+        //tag+class+pare
+
+        WebElement aSearch = driver.findElement(By.cssSelector("a.navigation-link[href='/search']"));
+        System.out.println(aSearch.getText());
+
+
+       // WebElement xPath1 = driver.findElement(By.xpath(("//*[@id='0']")));
+       // System.out.println(xPath1.getText());
+        //one step below
+        WebElement logoImg = driver.findElement(By.cssSelector(".logo>img"));
+        // one or more steps below -- space
+        driver.findElement(By.cssSelector(".feedback-body .feedback-date"));
+
+
+        //<tag> or <class> or <id>:nth-child(n)
+        WebElement feedback = driver.findElement(By.cssSelector(".feedback:nth-child(1)"));
+        System.out.println(feedback.getText());
+
+        WebElement login = driver.findElement(By.cssSelector(".navigation-link:nth-child(6)"));
+        System.out.println(login.getText());
+
+
+
+
+
+    }
+
+
+
+
+}
+
+
