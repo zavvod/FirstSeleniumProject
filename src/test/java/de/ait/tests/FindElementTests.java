@@ -1,3 +1,5 @@
+package de.ait.tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -128,6 +130,89 @@ public class FindElementTests {
         System.out.println(feedback.getText());
         WebElement logIN = driver.findElement(By.cssSelector(".navigation-link:nth-child(6)"));
         System.out.println(logIN.getText());
+    }
+
+    @Test
+    public void findElementByXpath() {
+        //     //tag[@arrtibute='value']
+        //     //tag[1]
+        //     //tag[@arrtibute='value1' and  @arrtibute='value2'] // and, or
+        //     //tag[@arrtibute='value1' or  @arrtibute='value2']
+        //     //tag[text()='Text']
+        //     //tag[contains(text(),'partial text')]
+
+        //driver.findElement(By.cssSelector("h1"));
+        driver.findElement(By.xpath("//h1"));
+        driver.findElement(By.xpath("//h2"));
+
+        //driver.findElement(By.cssSelector("#city"));
+        driver.findElement(By.xpath("//input[@id='city']"));
+        driver.findElement(By.xpath("//input[@id='dates']"));
+
+
+        //driver.findElement(By.cssSelector(".telephone"));
+        driver.findElement(By.xpath("//a[@class='telephone']"));
+        driver.findElement(By.xpath("//div[@class='input-container']"));
+
+        //driver.findElement(By.cssSelector("[href='/search']"));
+        driver.findElement(By.xpath("//a[@href='/search']"));
+        driver.findElement(By.xpath("//label[@for='city']"));
+
+        //driver.findElement(By.cssSelector("[class^='top']"));
+        driver.findElement(By.xpath("//*[starts-with(@class,'top')]"));
+
+        //driver.findElement(By.cssSelector("[class*='cities']"));
+        driver.findElement(By.xpath("//*[contains(@class,'cities')]"));
+
+        //text Our car was modern
+
+        //driver.findElement(By.xpath("//*[contains(text()='Our car was modern']"));
+        driver.findElement(By.xpath("//*[contains(.,'Our car was modern')]"));
+
+        //driver.findElement(By.xpath(//span[()=' Latest feedback from our customers ']));
+
+        //driver.findElement(By.cssSelector("a.navigation-link[href='/search']"));
+        driver.findElement(By.xpath("//a[@class='navigation-link' and @href='/search']"));
+
+        //driver.findElement(By.cssSelector(".logo>img"));
+        driver.findElement(By.xpath("//a[@class='logo']/img"));
+
+        //driver.findElement(By.cssSelector(".feedback-body .feedback-date"));
+        driver.findElement(By.xpath("//div[@class='feedback-body']//span[@class='feedback-date']"));
+
+        //driver.findElement(By.cssSelector(".feedback:nth-child(1)"));
+
+
+
+
+    }
+
+    @Test
+    public void findElementByXpathFamily(){
+        //parent
+        driver.findElement(By.xpath("//h1/parent::*"));
+        driver.findElement(By.xpath("//h1/parent::div"));
+        driver.findElement(By.xpath("//h1/.."));
+
+        //ancestor
+        driver.findElement(By.xpath("//h1/ancestor::*"));
+        driver.findElement(By.xpath("//h1/ancestor::div"));
+        driver.findElement(By.xpath("//h1/ancestor::div[1]"));//one step
+
+        //following-sibling
+        driver.findElement(By.xpath("//h1/following-sibling::h2"));
+
+        //preceding-sibling // //h2/preceding-sibling::h1
+        driver.findElement(By.xpath("//h2/preceding-sibling::h1"));
+
+
+
+
+
+
+
+
+
     }
 
 }
